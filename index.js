@@ -12,6 +12,9 @@ function ItemAvailability (wskey, aii) {
   this.wskey = wskey
   this.aii = aii || (this.wskey.user ? this.wskey.user.authenticatingInstitutionId : null)
 
+  if (!this.wskey)
+    throw Error('No WSKey provided')
+
   if (!this.aii)
     throw Error('ItemAvailability requires an authenticatingInstitutionId')
 }
@@ -34,6 +37,24 @@ ItemAvailability.prototype.query = function (oclcNum, callback) {
   }
 
   https.request(opts, function (res) {
+    var status = res.statusCode
+    var msg
+
+    switch (status) {
+      case 200: msg = null; break
+      case 400: msg = 'Bad parameters'; break
+      case 401: msg = 'Application authentication error'; break
+      case 403: msg = 'WSKey authorization error'; break
+      case 404: msg = 'Not found'; break
+      default:  msg = 'Status code of ' + status + ' returned'; break
+    }
+
+    if (msg) {
+      var err = new Error(msg)
+      err.statusCode = status
+      return callback(err)
+    }
+
     var body = ''
     res.setEncoding('utf8')
     res.on('data', function (d) { body += d })
