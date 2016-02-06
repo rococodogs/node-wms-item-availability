@@ -9,7 +9,7 @@ function ItemAvailability (wskey, aii) {
 
   var self = this
   this.wskey = wskey
-  this.aii = aii || (this.wskey.user ? this.wskey.user.authenticatingInstitutionId : null)
+  this.aii = aii || (this.wskey.user ? this.wskey.user.institutionId : null)
 
   if (!this.wskey)
     throw Error('No WSKey provided')

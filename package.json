@@ -9,11 +9,20 @@
   "keywords": [],
   "author": "Adam Malantonio <adam.malantonio@gmail.com>",
   "license": "MIT",
-  "devDependencies": {
-    "oclc-wskey": "3.0.2"
-  },
   "dependencies": {
     "is-empty-object": "1.1.1",
     "node-xml": "1.0.2"
+  },
+  "peerDependencies": {
+    "oclc-wskey": "3.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/malantonio/node-wms-item-availability.git"
+  },
+  "homepage": "https://github.com/malantonio/node-wms-item-availability",
+  "bugs": {
+    "url": "https://github.com/malantonio/node-wms-item-availability/issues",
+    "email": "adam.malantonio@gmail.com"
   }
 }
