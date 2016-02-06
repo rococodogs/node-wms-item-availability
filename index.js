@@ -44,18 +44,15 @@ ItemAvailability.prototype.query = function (oclcNum, callback) {
 }
 
 function parseXMLBody (body, callback) {
-  var holdingCount = 0
-  var currentHolding
-
-  // this feels super-longwinded and like it could be significantly slimmed
-  // down with some simple refactoring
   var parser = new Parser(function (p) {
     var holdings = []
+
     var holdingCount = 0
-    var currentHolding
     var circCount = 0
-    var currentCirc
     var volCount = 0
+
+    var currentHolding
+    var currentCirc
     var currentVol
 
     var charBuf = ''
@@ -63,62 +60,37 @@ function parseXMLBody (body, callback) {
     // flags
     var AT_HOLDINGS = false
     var AT_HOLDING = false
-
-    // holding info
-    var AT_NUC_CODE = false
-    var AT_SHELVING_LOC = false
-    var AT_LOCAL_LOC = false
-    var AT_CALL_NUM = false
-    var AT_COPY_NUM = false
-    var AT_H_ENUM_CHRON = false
-
-    // volume level
     var AT_VOLUMES = false
     var AT_VOLUME = false
-    var AT_V_ENUM_CHRON = false
-
-    // circulations level
     var AT_CIRCULATIONS = false
     var AT_CIRCULATION = false
 
+    var circBoolFields = [
+      'availableNow', 'renewable', 'onHold'
+    ]
+
     p.onStartElementNS(function (el, attr) {
+      if (el === 'holdings') {
+        AT_HOLDINGS = true
+        return
+      }
+
       if (el === 'holding' && !AT_HOLDING) {
         AT_HOLDING = true
         currentHolding = holdings[holdingCount++] = {}
         return
       }
 
-      // holding fields
-      if (AT_HOLDING) {
-        if (el === 'nucCode')
-          AT_NUC_CODE = true
-        if (el === 'shelvingLocation')
-          AT_SHELVING_LOC = true
-        if (el === 'localLocation')
-          AT_LOCAL_LOC = true
-        if (el === 'callNumber')
-          AT_CALL_NUM = true
-        if (el === 'copyNumber')
-          AT_COPY_NUM = true
-        if (el === 'enumAndChron')
-          AT_H_ENUM_CHRON = true
-        if (el === 'shelvingLocation')
-          AT_SHELVING_LOC = true
-        if (el === 'volumes') {
-          AT_VOLUMES = true
-          currentHolding.volumes = []
-        }
+      if (el === 'volumes') {
+        AT_VOLUMES = true
+        currentHolding.volumes = []
+        return
       }
 
       if (el === 'volume' && AT_VOLUMES && !AT_VOLUME) {
         AT_VOLUME = true
         currentVol = currentHolding.volumes[volCount++] = {}
         return
-      }
-
-      if (AT_VOLUME) {
-        if (el === 'enumAndChron' && AT_VOLUME)
-          AT_V_ENUM_CHRON = true
       }
 
       // circ fields
@@ -134,117 +106,86 @@ function parseXMLBody (body, callback) {
         return
       }
 
-      if (AT_CIRCULATION) {
-        // bool values
-        if (el === 'availableNow' || el === 'renewable' || el === 'onHold') {
-          attr.forEach(function (a) {
-            if (a[0] === 'value') {
-              switch(a[1]) {
-                case '0': currentCirc[el] = false; break
-                case '1': currentCirc[el] = true; break
-              }
+      // handle bool values
+      if (circBoolFields.indexOf(el) > -1 && AT_CIRCULATION) {
+        attr.forEach(function (a) {
+          if (a[0] === 'value') {
+            switch(a[1]) {
+              case '0': currentCirc[el] = false; break
+              case '1': currentCirc[el] = true; break
             }
-          })
-        }
+          }
+        })
 
         return
       }
     })
 
     p.onCharacters(function (char) {
+      if (!AT_HOLDINGS) return
+
       charBuf += char
       return
     })
 
     p.onEndElementNS(function (el, attr) {
+      var val = charBuf
+      charBuf = ''
+
+      // add data to circ fields
       if (AT_CIRCULATION) {
-        var circCharFields = [
-          'itemId', 'temporaryLocation', 'reasonUnavailable', 'enumAndChron'
-        ]
-
-        if (circCharFields.indexOf(el) > -1)
-          currentCirc[el] = charBuf
-
-        if (el === 'circulation')
+        if (el === 'circulation') {
           AT_CIRCULATION = false
-      }
+          currentCirc = null
+        } else if (circBoolFields.indexOf(el) === -1) {
+          currentCirc[el] = val
+        }
 
-      if (el === 'circulation' && AT_CIRCULATION) {
-        AT_CIRCULATION = false
-        currentCirc = null
+        return
       }
 
       if (el === 'circulations' && AT_CIRCULATIONS) {
         AT_CIRCULATIONS = false
         removeEmptyEntries(currentHolding.circulations)
         circCount = 0
+        return
       }
 
       if (AT_VOLUME) {
-        var volCharFields = [
-          'enumAndChron'
-        ]
-
-        if (volCharFields.indexOf(el) > -1) {
-          currentVol[el] = charBuf
+        if (el === 'volume') {
+          AT_VOLUME = false
+          currentVol = null
+        } else {
+          currentVol[el] = val
         }
-      }
 
-      if (el === 'volume' && AT_VOLUME) {
-        AT_VOLUME = false
-        currentVol = false
+        return
       }
 
       if (el === 'volumes' && AT_VOLUMES) {
         AT_VOLUMES = false
         removeEmptyEntries(currentHolding.volumes)
         volCount = 0
+        return
       }
 
       if (AT_HOLDING) {
-        var charFields = [
-          'nucCode', 'localLocation', 'shelvingLocation', 'callNumber',
-          'copyNumber', 'enumAndChron'
-        ]
-
-        if (charFields.indexOf(el) > -1)
-          currentHolding[el] = charBuf
-
-        // close out checks
-        if (el === 'nucCode' && AT_NUC_CODE)
-          AT_NUC_CODE = false
-
-        if (el === 'localLocation' && AT_LOCAL_LOC)
-          AT_LOCAL_LOC = false
-
-        if (el === 'shelvingLocation' && AT_SHELVING_LOC)
-          AT_SHELVING_LOC = false
-
-        if (el === 'callNumber' && AT_CALL_NUM)
-          AT_CALL_NUM = false
-
-        if (el === 'enumAndChron' && AT_H_ENUM_CHRON)
-          AT_H_ENUM_CHRON = false
-
-        if (el === 'copyNumber' && AT_COPY_NUM) {
-          currentHolding[el] = Number.parseInt(currentHolding[el], 10)
-          AT_COPY_NUM = false
+        if (el === 'holding' && AT_HOLDING) {
+          AT_HOLDING = false
+          currentHolding = null
+        } else if (el === 'copyNumber') {
+          currentHolding[el] = Number.parseInt(val, 10)
+        } else {
+          currentHolding[el] = val
         }
-      }
-
-
-      if (el === 'holding' && AT_HOLDING) {
-        AT_HOLDING = false
-        currentHolding = null
+        return
       }
 
       if (el === 'holdings' && AT_HOLDINGS) {
         AT_HOLDINGS = false
         removeEmptyEntries(holdings)
+        return
       }
-
-      // reset charBuf at the end of the element (+ after assignment)
-      charBuf = ''
     })
 
     p.onEndDocument(function () {
