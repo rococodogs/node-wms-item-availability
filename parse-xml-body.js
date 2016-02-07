@@ -132,7 +132,7 @@ module.exports = function parseXMLBody (body, callback) {
           AT_HOLDING = false
           currentHolding = null
         } else if (el === 'copyNumber') {
-          currentHolding[el] = Number.parseInt(val, 10)
+          currentHolding[el] = parseInt(val, 10)
         } else {
           currentHolding[el] = val
         }
