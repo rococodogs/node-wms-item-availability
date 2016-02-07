@@ -1,6 +1,6 @@
 {
   "name": "wms-item-availability",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Using an OCLC number, check the availability of an item at an institution.",
   "main": "index.js",
   "scripts": {
