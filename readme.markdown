@@ -1,5 +1,7 @@
 # WMS Item Availability
 
+[![Build Status](https://travis-ci.org/malantonio/node-wms-item-availability.svg?branch=master)](https://travis-ci.org/malantonio/node-wms-item-availability)
+
 Using an OCLC number, check the availability of an item at an institution.
 
 **Note:** Though the [Availability API][avail-api] does return bibliographic
