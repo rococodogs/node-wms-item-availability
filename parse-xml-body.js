@@ -82,7 +82,7 @@ module.exports = function parseXMLBody (body, callback) {
     p.onCharacters(function (char) {
       if (!AT_HOLDINGS) return
 
-      charBuf += char
+      charBuf += char.trim()
       return
     })
 
