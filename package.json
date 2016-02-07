@@ -4,7 +4,7 @@
   "description": "Using an OCLC number, check the availability of an item at an institution.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node test/*.js"
   },
   "keywords": [],
   "author": "Adam Malantonio <adam.malantonio@gmail.com>",
@@ -24,5 +24,8 @@
   "bugs": {
     "url": "https://github.com/malantonio/node-wms-item-availability/issues",
     "email": "adam.malantonio@gmail.com"
+  },
+  "devDependencies": {
+    "tape": "4.4.0"
   }
 }

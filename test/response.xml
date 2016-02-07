@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<searchRetrieveResponse xmlns:ns2="http://www.loc.gov/zing/srw/diagnostic/" xmlns="http://www.loc.gov/zing/srw/" xmlns:ns4="http://www.loc.gov/zing/cql/xcql/" xmlns:ns3="http://www.loc.gov/zing/srw/update/">
+    <numberOfRecords>1</numberOfRecords>
+    <resultSetId>default</resultSetId>
+    <records>
+        <record>
+            <recordSchema>OPACXML</recordSchema>
+            <recordPacking>xml</recordPacking>
+            <recordData>
+                <opacRecord xmlns="" xmlns:ns5="http://www.loc.gov/zing/srw/">
+                    <bibliographicRecord>
+                        <record type="Bibliographic">
+                            <leader>cas   a </leader>
+                            <controlfield tag="001">15703846</controlfield>
+                            <controlfield tag="008">870518c19899999wiuar        s0   a0eng c</controlfield>
+                            <datafield ind1=" " ind2=" " tag="010">
+                                <subfield code="010">   96655081 </subfield>
+                            </datafield>
+                            <datafield ind1=" " ind2=" " tag="040">
+                                <subfield code="040">GZQ</subfield>
+                                <subfield code="040">eng</subfield>
+                                <subfield code="040">GZQ</subfield>
+                                <subfield code="040">OCL</subfield>
+                                <subfield code="040">DLC</subfield>
+                                <subfield code="040">OCLCQ</subfield>
+                                <subfield code="040">OCLCF</subfield>
+                            </datafield>
+                            <datafield ind1=" " ind2=" " tag="012">
+                                <subfield code="012">9611</subfield>
+                            </datafield>
+                            <datafield ind1="1" ind2=" " tag="029">
+                                <subfield code="029">AU@</subfield>
+                                <subfield code="029">000012673379</subfield>
+                            </datafield>
+                            <datafield ind1=" " ind2=" " tag="042">
+                                <subfield code="042">pcc</subfield>
+                            </datafield>
+                            <datafield ind1=" " ind2=" " tag="043">
+                                <subfield code="043">n-us-wi</subfield>
+                            </datafield>
+                            <datafield ind1="0" ind2="0" tag="050">
+                                <subfield code="050">L216</subfield>
+                                <subfield code="050">.B36 subser.</subfield>
+                                <subfield code="050">Z678.4.W6</subfield>
+                            </datafield>
+                            <datafield ind1="0" ind2="0" tag="082">
+                                <subfield code="082">027.0775</subfield>
+                                <subfield code="082">20</subfield>
+                            </datafield>
+                            <datafield ind1=" " ind2=" " tag="086">
+                                <subfield code="086">LIb.1/6:1989-</subfield>
+                                <subfield code="086">widocs</subfield>
+                            </datafield>
+                            <datafield ind1="0" ind2="0" tag="245">
+                                <subfield code="245">Long-range plan for library services in Wisconsin.</subfield>
+                            </datafield>
+                            <datafield ind1=" " ind2=" " tag="260">
+                                <subfield code="260">Madison, Wis. :</subfield>
+                                <subfield code="260">Division for Library Services, Wisconsin Dept. of Public Instruction,</subfield>
+                                <subfield code="260">[1984]-</subfield>
+                            </datafield>
+                            <datafield ind1=" " ind2=" " tag="300">
+                                <subfield code="300">volumes ;</subfield>
+                                <subfield code="300">28 cm.</subfield>
+                            </datafield>
+                            <datafield ind1=" " ind2=" " tag="310">
+                                <subfield code="310">Annual</subfield>
+                            </datafield>
+                            <datafield ind1=" " ind2=" " tag="336">
+                                <subfield code="336">text</subfield>
+                                <subfield code="336">txt</subfield>
+                                <subfield code="336">rdacontent</subfield>
+                            </datafield>
+                            <datafield ind1=" " ind2=" " tag="337">
+                                <subfield code="337">unmediated</subfield>
+                                <subfield code="337">n</subfield>
+                                <subfield code="337">rdamedia</subfield>
+                            </datafield>
+                            <datafield ind1=" " ind2=" " tag="338">
+                                <subfield code="338">volume</subfield>
+                                <subfield code="338">nc</subfield>
+                                <subfield code="338">rdacarrier</subfield>
+                            </datafield>
+                            <datafield ind1="0" ind2=" " tag="362">
+                                <subfield code="362">1984-1989-</subfield>
+                            </datafield>
+                            <datafield ind1="1" ind2=" " tag="490">
+                                <subfield code="490">Bulletin</subfield>
+                            </datafield>
+                            <datafield ind1=" " ind2=" " tag="550">
+                                <subfield code="550">Issued by: Wisconsin Dept. of Public Instruction, 1985/90-&lt;1986-91&gt;; &lt;'93-98&gt;: Division for Library Services; &lt;1995-2000-&gt; Division for Libraries and Community Learning.</subfield>
+                            </datafield>
+                            <datafield ind1=" " ind2=" " tag="580">
+                                <subfield code="580">Plan for 1984/89 issued as Wisconsin library bulletin, summer 1984.</subfield>
+                            </datafield>
+                            <datafield ind1=" " ind2=" " tag="580">
+                                <subfield code="580">Companion publication: LSCA information and guidelines for Wisconsin.</subfield>
+                            </datafield>
+                            <datafield ind1=" " ind2=" " tag="588">
+                                <subfield code="588">Latest issue consulted: 1995-2000.</subfield>
+                            </datafield>
+                            <datafield ind1=" " ind2="0" tag="650">
+                                <subfield code="650">Libraries and state</subfield>
+                                <subfield code="650">Wisconsin</subfield>
+                                <subfield code="650">Periodicals.</subfield>
+                            </datafield>
+                            <datafield ind1=" " ind2="7" tag="655">
+                                <subfield code="655">Periodicals.</subfield>
+                                <subfield code="655">fast</subfield>
+                                <subfield code="655">(OCoLC)fst01411641</subfield>
+                            </datafield>
+                            <datafield ind1=" " ind2="7" tag="650">
+                                <subfield code="650">Libraries and state.</subfield>
+                                <subfield code="650">fast</subfield>
+                                <subfield code="650">(OCoLC)fst00997572</subfield>
+                            </datafield>
+                            <datafield ind1=" " ind2="7" tag="651">
+                                <subfield code="651">Wisconsin.</subfield>
+                                <subfield code="651">fast</subfield>
+                                <subfield code="651">(OCoLC)fst01204595</subfield>
+                            </datafield>
+                            <datafield ind1="1" ind2=" " tag="710">
+                                <subfield code="710">Wisconsin.</subfield>
+                                <subfield code="710">Department of Public Instruction.</subfield>
+                            </datafield>
+                            <datafield ind1="1" ind2=" " tag="710">
+                                <subfield code="710">Wisconsin.</subfield>
+                                <subfield code="710">Division for Library Services.</subfield>
+                            </datafield>
+                            <datafield ind1="1" ind2=" " tag="710">
+                                <subfield code="710">Wisconsin.</subfield>
+                                <subfield code="710">Division for Libraries and Community Learning.</subfield>
+                            </datafield>
+                            <datafield ind1="0" ind2=" " tag="730">
+                                <subfield code="730">Wisconsin library bulletin.</subfield>
+                            </datafield>
+                            <datafield ind1="1" ind2=" " tag="772">
+                                <subfield code="772">Wisconsin library bulletin</subfield>
+                                <subfield code="772">0043-6526</subfield>
+                                <subfield code="772">(DLC)   07008285</subfield>
+                                <subfield code="772">(OCoLC)1770033</subfield>
+                                <subfield code="772">summer 1984</subfield>
+                            </datafield>
+                            <datafield ind1="0" ind2="0" tag="780">
+                                <subfield code="780">Comprehensive long-range program for library services in Wisconsin</subfield>
+                                <subfield code="780">(OCoLC)8287731</subfield>
+                            </datafield>
+                            <datafield ind1="1" ind2=" " tag="787">
+                                <subfield code="787">LSCA information and guidelines for Wisconsin</subfield>
+                                <subfield code="787">(DLC)   96655082</subfield>
+                                <subfield code="787">(OCoLC)18803942</subfield>
+                            </datafield>
+                            <datafield ind1=" " ind2="0" tag="830">
+                                <subfield code="830">Bulletin (Wisconsin. Department of Public Instruction)</subfield>
+                            </datafield>
+                            <datafield ind1=" " ind2=" " tag="850">
+                                <subfield code="850">DLC</subfield>
+                            </datafield>
+                        </record>
+                    </bibliographicRecord>
+                    <holdings>
+                        <holding>
+                            <typeOfRecord>x</typeOfRecord>
+                            <encodingLevel>z</encodingLevel>
+                            <format>zu</format>
+                            <receiptAcqStatus>0</receiptAcqStatus>
+                            <generalRetention>8</generalRetention>
+                            <completeness>4</completeness>
+                            <dateOfReport>20091231</dateOfReport>
+                            <nucCode>OCPSB</nucCode>
+                            <localLocation>NORT</localLocation>
+                            <shelvingLocation>STACKS</shelvingLocation>
+                            <callNumber>708.7 S418</callNumber>
+                            <copyNumber>1</copyNumber>
+                            <volumes>
+                                <volume/>
+                            </volumes>
+                            <circulations>
+                                <circulation>
+                                    <availableNow value="1"/>
+                                    <itemId>311186000841448</itemId>
+                                    <renewable value="0"/>
+                                    <onHold value="0"/>
+                                </circulation>
+                            </circulations>
+                        </holding>
+                        <holding>
+                            <typeOfRecord>x</typeOfRecord>
+                            <encodingLevel>z</encodingLevel>
+                            <format>zu</format>
+                            <receiptAcqStatus>0</receiptAcqStatus>
+                            <generalRetention>8</generalRetention>
+                            <completeness>4</completeness>
+                            <dateOfReport>20091231</dateOfReport>
+                            <nucCode>OCPSB</nucCode>
+                            <localLocation>MAIN</localLocation>
+                            <shelvingLocation>STACKS</shelvingLocation>
+                            <callNumber>708.7 S418</callNumber>
+                            <copyNumber>1</copyNumber>
+                            <volumes>
+                                <volume/>
+                            </volumes>
+                            <circulations>
+                                <circulation>
+                                    <availableNow value="1"/>
+                                    <itemId>311186000804817</itemId>
+                                    <renewable value="0"/>
+                                    <onHold value="0"/>
+                                </circulation>
+                            </circulations>
+                        </holding>
+                    </holdings>
+                </opacRecord>
+            </recordData>
+        </record>
+    </records>
+    <nextRecordPosition>1</nextRecordPosition>
+</searchRetrieveResponse>
