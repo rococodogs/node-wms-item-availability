@@ -68,7 +68,7 @@ module.exports = function parseXMLBody (body, callback) {
       if (circBoolFields.indexOf(el) > -1 && AT_CIRCULATION) {
         attr.forEach(function (a) {
           if (a[0] === 'value') {
-            switch(a[1]) {
+            switch (a[1]) {
               case '0': currentCirc[el] = false; break
               case '1': currentCirc[el] = true; break
             }
@@ -157,9 +157,9 @@ module.exports = function parseXMLBody (body, callback) {
 }
 
 function removeEmptyEntries (arr) {
-  var i = 0, len = arr.length
+  var i = 0
+  var len = arr.length
   for (; i < len; i++) {
-    if (isEmptyObject(arr[i]))
-      arr.splice(i, 1)
+    if (isEmptyObject(arr[i])) arr.splice(i, 1)
   }
 }
