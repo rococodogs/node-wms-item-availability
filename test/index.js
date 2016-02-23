@@ -1,33 +1,7 @@
 var test = require('tape')
 var xml = require('fs').readFileSync(__dirname + '/response.xml')
+var Avail = require('../')
 var parse = require('../parse-xml-body')
-
-// typeOfRecord
-// encodingLevel
-// format
-// receiptAcqStatus
-// generalRetention
-// completeness
-// dateOfReport
-// nucCode
-// localLocation
-// shelvingLocation
-// callNumber
-// copyNumber
-// _enumAndChron_
-// volumes
-// _volumes/volume_
-// _volumes/volume/enumeration_
-// _volumes/volume/chronology_
-// _volumes/volume/enumAndChron_
-// circulations
-// circulations/circulation
-// circulations/circulation/availableNow
-// _circulations/circulation/availabilityDate_
-// circulations/circulation/itemId
-// circulations/circulation/renewable
-// circulations/circulation/onHold
-// _circulations/circulation/onHold/enumAndChron_
 
 var requiredFields = [
   'typeOfRecord',
@@ -77,5 +51,17 @@ test('response is parsed + contains the right data', function (t) {
     }
 
     t.end()
+  })
+})
+
+test('Error is thrown if no WSKey or auth. inst. id is passed', function (t) {
+  t.plan(2)
+
+  t.throws(function () {
+    Avail()
+  })
+
+  t.throws(function () {
+    new Avail({})
   })
 })
